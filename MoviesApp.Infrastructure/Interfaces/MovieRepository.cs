@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MoviesApp.Aplication.Entity;
+using MoviesApp.Aplication.Interfaces;
+using MoviesApp.Domain.Entity;
 using MoviesApp.Infrastructure.Data;
-using MoviesApp.Infrastructure.Repository;
 
 namespace MoviesApp.Infrastructure.Interfaces;
 

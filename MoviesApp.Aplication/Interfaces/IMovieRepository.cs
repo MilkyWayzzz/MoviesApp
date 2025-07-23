@@ -2,7 +2,7 @@
 
 namespace MoviesApp.Aplication.Interfaces;
 
-public interface IMovieService
+public interface IMovieRepository
 {
     Task<IEnumerable<Movie>> GetAllAsync(CancellationToken cancellationToken);
 }

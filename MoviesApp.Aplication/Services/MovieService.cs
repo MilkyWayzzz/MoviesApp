@@ -1,13 +1,12 @@
-﻿using MoviesApp.Aplication.Entity;
-using MoviesApp.Aplication.Interfaces;
+﻿using MoviesApp.Aplication.Interfaces;
+using MoviesApp.Domain.Entity;
 
 namespace MoviesApp.Aplication.Services;
 
-public class MovieService : IMovieService
+public class MovieService(IMovieRepository movieRepository) : IMovieService
 {
-    
-    public Task<IEnumerable<Movie>> GetAllAsync(CancellationToken cancellationToken)
+    public async Task<IEnumerable<Movie>> GetAllAsync(CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+       return await movieRepository.GetAllAsync(cancellationToken);
     }
 }

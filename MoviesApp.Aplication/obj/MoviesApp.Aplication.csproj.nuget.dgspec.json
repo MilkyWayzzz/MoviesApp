@@ -26,8 +26,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\csharp\\MoviesApp\\MoviesApp\\MoviesApp.csproj": {
-                "projectPath": "D:\\csharp\\MoviesApp\\MoviesApp\\MoviesApp.csproj"
+              "D:\\csharp\\MoviesApp\\MoviesApp.Domain\\MoviesApp.Domain.csproj": {
+                "projectPath": "D:\\csharp\\MoviesApp\\MoviesApp.Domain\\MoviesApp.Domain.csproj"
               }
             }
           }
@@ -67,14 +67,14 @@
         }
       }
     },
-    "D:\\csharp\\MoviesApp\\MoviesApp\\MoviesApp.csproj": {
+    "D:\\csharp\\MoviesApp\\MoviesApp.Domain\\MoviesApp.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\csharp\\MoviesApp\\MoviesApp\\MoviesApp.csproj",
-        "projectName": "MoviesApp",
-        "projectPath": "D:\\csharp\\MoviesApp\\MoviesApp\\MoviesApp.csproj",
+        "projectUniqueName": "D:\\csharp\\MoviesApp\\MoviesApp.Domain\\MoviesApp.Domain.csproj",
+        "projectName": "MoviesApp.Domain",
+        "projectPath": "D:\\csharp\\MoviesApp\\MoviesApp.Domain\\MoviesApp.Domain.csproj",
         "packagesPath": "C:\\Users\\pavlenko\\.nuget\\packages\\",
-        "outputPath": "D:\\csharp\\MoviesApp\\MoviesApp\\obj\\",
+        "outputPath": "D:\\csharp\\MoviesApp\\MoviesApp.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pavlenko\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -106,16 +106,6 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "dependencies": {
-            "Npgsql.EntityFrameworkCore.PostgreSQL": {
-              "target": "Package",
-              "version": "[9.0.4, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[9.0.3, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -128,9 +118,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

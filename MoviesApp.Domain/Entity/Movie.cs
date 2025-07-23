@@ -1,4 +1,4 @@
-﻿namespace MoviesApp.Aplication.Entity;
+﻿namespace MoviesApp.Domain.Entity;
 
 public sealed record Movie
 {
