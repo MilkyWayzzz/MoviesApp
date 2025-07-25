@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MoviesApp.Aplication.DTOs;
 using MoviesApp.Aplication.Interfaces;
 using MoviesApp.Domain.Entity;
 using MoviesApp.Infrastructure.Data;
@@ -19,6 +20,41 @@ public class MovieRepository(MovieDbContext _movieDbContext) : IMovieRepository
         }
         return movies;
     }
+
+    public async Task<Movie> GetWithTheParamsAsync(MovieSearchDto movieSearchDto, CancellationToken cancellationToken)
+    {
+        var queryDb = _movieDbContext.Movies.AsQueryable();
+        if(!string.IsNullOrEmpty(movieSearchDto.Title))
+            queryDb = queryDb.Where(m => m.Title.Contains(movieSearchDto.Title));
+        if(movieSearchDto.ReleaseDateMin != 0 && movieSearchDto.ReleaseDateMin != 0)
+            queryDb = queryDb.Where(m=> m.ReleaseDate >= movieSearchDto.ReleaseDateMin);
+        if(movieSearchDto.ReleaseDateMax != 0 && movieSearchDto.ReleaseDateMax != 0)
+            queryDb = queryDb.Where(m=> m.ReleaseDate <= movieSearchDto.ReleaseDateMax);
+        if(movieSearchDto.RatingMin != 0 && movieSearchDto.RatingMin != 0)
+            queryDb = queryDb.Where(m=> m.Rating >= movieSearchDto.RatingMin);
+        if(movieSearchDto.RatingMax != 0 && movieSearchDto.RatingMax != 0)
+            queryDb = queryDb.Where(m=> m.Rating <= movieSearchDto.RatingMax);
+        
+        var count = await queryDb.CountAsync(cancellationToken);
+        
+        if(count == 0)
+            return null;
+
+        MovieDb? movieDb = null;
+        if (count == 1)
+        {
+            movieDb = await queryDb.FirstOrDefaultAsync(cancellationToken);
+            return ToMovie(movieDb);
+        }
+            
+        var randomNumber = Random.Shared.Next(1, count + 1);
+
+         movieDb = await queryDb
+            .Skip(randomNumber - 1)
+            .FirstOrDefaultAsync(cancellationToken);
+        return movieDb == null ? null : ToMovie(movieDb);
+    }
+
 
     /*public Task<Movie?> GetByIdAsync(int id, CancellationToken cancellationToken)
     {
